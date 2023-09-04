@@ -1,0 +1,42 @@
+#wrapper{
+    display:flex;
+    justify-content: center;
+    gap:24px;
+}
+table{
+    border-collapse: collapse;
+}
+colgroup{
+    border:3px solid black;
+}
+tr:nth-of-type(3n){
+    border-bottom:3px solid black;
+}
+td{
+position:relative;
+border:1px solid black;
+padding:0;
+width:2.5em;
+height:2.5em;
+font-size:18px;
+text-align: center;
+cursor:pointer;
+background-color:white;
+background-clip:padding-box;
+}
+.selected{
+    background-color:#fcfa13;
+}
+
+.given-number{
+    cursor:default;
+    background-color: #cfcfcf;
+}
+
+.candidates{
+    position:absolute;
+    top:0;
+    right:0;
+    font-size:10px;
+    color:#404040;
+}
