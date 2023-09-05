@@ -18,3 +18,14 @@ Goal is to fill every cell of a 9x9 grid = 81 squares, with the numbers 1-9 such
 
 */
 
+document.querySelectorAll('td').forEach((cell) => {
+    const isStandard = !cell.classList.contains('given-number');
+    if(isStandard){
+        cell.addEventListener('click', onClickStandardCell);
+    }
+
+
+    function onClickStandardCell (){
+        this.classList('selected')
+    }
+})
