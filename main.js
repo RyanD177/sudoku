@@ -19,13 +19,52 @@ Goal is to fill every cell of a 9x9 grid = 81 squares, with the numbers 1-9 such
 */
 
 document.querySelectorAll('td').forEach((cell) => {
+
     const isStandard = !cell.classList.contains('given-number');
+    
     if(isStandard){
         cell.addEventListener('click', onClickStandardCell);
     }
 
+    document.querySelectorAll('.number-control').forEach((numberControl) => {
+        numberControl.addEventListener('click', onClickNumberControl);
+    })
 
     function onClickStandardCell (){
-        this.classList('selected')
+        document.querySelector('.selected')?.classList?.remove('selected');
+        
+        this.classList.add('selected')
+    }
+
+    function onClickNumberControl() {
+        const selectedCell = document.querySelector('.selected');
+        if(selectedCell == null){
+            return;
+        }
+
+        const ClickedNumber = this.textContent;
+        const isCandidateMove = document.getElementById('candidate-switch').checked;
+
+        if(isCandidateMove){
+            const candidatesNode = selectedCell.querySelector('.candidates');
+
+            const candidates = candidatesNode.textContent.split("");
+
+            const numIndex = candidates.indexOf(ClickedNumber); // returns index or -1
+
+            if(numIndex === -1){
+                candidates.push(ClickedNumber);
+
+            }else{
+                candidates.splice(numIndex, 1);
+            }
+
+            candidatesNode.textContent = candidates.sort().join("");
+
+        }else{
+            selectedCell.querySelector('.value').textContent = ClickedNumber;
+
+        }
+
     }
 })
